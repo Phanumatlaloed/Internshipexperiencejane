@@ -1,0 +1,77 @@
+/* =========================
+   Contact Page Theme
+========================= */
+
+.contact-hero{
+  padding-top: 60px;
+  padding-bottom: 20px;
+  text-align: center;
+}
+
+.contact-title{
+  font-size: 42px;
+  margin: 10px 0;
+}
+
+.contact-card{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+
+  padding: 36px;
+  border-radius: 24px;
+
+  background: var(--glass);
+  border: 1px solid var(--line);
+  box-shadow: 0 25px 70px rgba(0,0,0,0.45);
+}
+
+/* LEFT */
+.avatar{
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background: linear-gradient(135deg,var(--pink),var(--deep));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-weight:900;
+  font-size:26px;
+  margin-bottom:14px;
+}
+
+.contact-role{
+  margin-bottom: 12px;
+}
+
+.contact-desc{
+  line-height: 1.7;
+}
+
+/* RIGHT */
+.info{
+  margin-bottom: 18px;
+}
+
+.label{
+  font-size: 13px;
+  color: var(--pink);
+  font-weight: 800;
+}
+
+.contact-actions{
+  margin-top: 24px;
+  display:flex;
+  gap:12px;
+}
+
+/* Responsive */
+@media(max-width:768px){
+  .contact-card{
+    grid-template-columns: 1fr;
+  }
+
+  .contact-title{
+    font-size: 30px;
+  }
+}

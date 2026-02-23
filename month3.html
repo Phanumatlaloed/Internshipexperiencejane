@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Month 3 | LINE OA Case Study (Dental Clinic)</title>
+
+  <link rel="stylesheet" href="/src/style.css" />
+  <link rel="stylesheet" href="/src/month3.css" />
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a class="brand" href="index.html">
+      <div class="logo-text">
+        <span class="logo-main">PHANUMAT</span>
+        <span class="logo-accent">LALOED</span>
+      </div>
+      <div class="logo-sub">Internship Portfolio</div>
+    </a>
+
+    <nav class="nav">
+      <a class="nav-link" href="index.html">About</a>
+      <a class="nav-link" href="experience.html">Experience</a>
+      <a class="nav-link" href="projects.html">Growth</a>
+      <a class="nav-link" href="skills.html">Skills</a>
+      <a class="nav-link" href="contact.html">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main class="page">
+
+<!-- HERO -->
+<section class="m3-hero">
+  <div class="container m3-hero-inner">
+
+    <div class="m3-left">
+      <p class="badge">Month 3</p>
+
+      <h1 class="m3-title">
+        ทำงานทีม: <span class="pink">LINE OA Case Study</span><br/>
+        <span class="sub">Dental Clinic • Appointment & Notification Automation</span>
+      </h1>
+
+      <p class="muted m3-sub">
+        <strong>INTELLIGENCE BUSINESS (THAILAND).CO., LTD</strong><br/>
+        Presented by IntBiz Co., Ltd. • Automated Appointment & Notification System via LINE Official Account
+      </p>
+
+      <div class="m3-kpis">
+        <div class="kpi">
+          <p class="kpi-label">System</p>
+          <p class="kpi-value">Appointment + Auto Notify</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">Stack</p>
+          <p class="kpi-value">LINE OA • Make • GAS</p>
+        </div>
+        <div class="kpi">
+          <p class="kpi-label">Teamwork</p>
+          <p class="kpi-value">Team of 4</p>
+        </div>
+      </div>
+
+      <div class="m3-actions">
+        <a class="btn-m3 primary" href="#flow">ดู Data Flow</a>
+        <a class="btn-m3 ghost" href="#steps">ดู 8 ฟังก์ชัน</a>
+        <a class="btn-m3 link" href="#process">Development Process</a>
+      </div>
+
+      <div class="note-m3">
+        <strong>Key mindset:</strong> เก็บ <span class="pink">LINE userId</span> ให้ถูกต้องตั้งแต่ต้น → แล้วค่อยแจ้งเตือนอัตโนมัติผ่าน GAS
+      </div>
+    </div>
+
+    <div class="m3-right">
+      <!-- Tools (logo row) -->
+      <div class="tool-card">
+        <div class="tool-head">
+          <h3>Tools ที่ใช้</h3>
+          <span class="chip">Integration</span>
+        </div>
+
+        <div class="tool-row">
+          <div class="tool">
+            <img src="/images/month3/tool-line.png" alt="LINE OA">
+            <p>LINE OA</p>
+          </div>
+          <div class="tool">
+            <img src="/images/month3/make.png" alt="Make">
+            <p>Make</p>
+          </div>
+          <div class="tool">
+            <img src="/images/month3/app.png" alt="Google Apps Script">
+            <p>Apps Script</p>
+          </div>
+          <div class="tool">
+            <img src="/images/month3/form.png" alt="Google Forms">
+            <p>Forms</p>
+          </div>
+          <div class="tool">
+            <img src="/images/month3/sheet.png" alt="Google Sheets">
+            <p>Sheets</p>
+          </div>
+        </div>
+
+        <p class="muted small">
+          ระบบเชื่อมต่อ Google Forms/Sheets ผ่าน API โดย Make เก็บ userId ก่อนกรอกฟอร์ม และ GAS ส่งแจ้งเตือนทันทีหลังส่งแบบฟอร์ม
+        </p>
+      </div>
+
+      <!-- Quick Summary -->
+      <div class="card-m3">
+        <div class="card-head">
+          <h3 class="card-title">Quick Summary</h3>
+          <span class="chip chip-ghost">Case Study</span>
+        </div>
+
+        <ul class="m3-check">
+          <li>ผู้ใช้พิมพ์ “นัดแพทย์” → ได้ลิงก์ Google Form อัตโนมัติ</li>
+          <li>Make เก็บ <strong>LINE userId</strong> + สร้างลิงก์แบบ Prefill</li>
+          <li>ข้อมูลลง Google Sheets แบบ Real-time</li>
+          <li>GAS Trigger <code>onFormSubmit(e)</code> → แจ้งเตือนแอดมิน + ยืนยันผู้ป่วย</li>
+          <li>รองรับหลายแอดมิน และแสดงผลแบบอ่านง่าย (Flex Message)</li>
+        </ul>
+
+        <div class="tag-row">
+          <span class="tag">Data Flow</span>
+          <span class="tag">API Integration</span>
+          <span class="tag">Automation</span>
+          <span class="tag">LINE Messaging API</span>
+          <span class="tag">Prefill Form</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- DATA FLOW -->
+<section id="flow" class="section">
+  <div class="container">
+
+    <div class="section-head m3-head">
+      <p class="eyebrow">Data Flow</p>
+      <h2>ภาพรวมระบบ: End-to-End Workflow</h2>
+      <p class="muted">
+        LINE OA → Make (Webhook/Filter/Iterator) → Prefill Google Form → Google Sheets → Apps Script Trigger → Notify Admin/Patient
+      </p>
+    </div>
+
+    <div class="grid two">
+      <div class="panel">
+        <h3>สิ่งที่ได้เรียนรู้ (Learning)</h3>
+        <ul class="list">
+          <li><strong>Data Flow:</strong> เห็นภาพข้อมูลไหลทั้งระบบ ตั้งแต่ user message → เก็บ userId → เก็บข้อมูล → แจ้งเตือน</li>
+          <li><strong>API/Integration:</strong> เข้าใจการทำงานของ Webhook + Reply/Push Message</li>
+          <li><strong>Teamwork:</strong> วางแผน workflow ร่วมกัน แบ่งหน้าที่ ทดสอบร่วมกัน</li>
+        </ul>
+      </div>
+
+      <div class="panel accent">
+        <h3>Identity & Data Integrity</h3>
+        <p class="muted">
+          วางหลักการว่า <strong>LINE userId</strong> ต้องได้จาก LINE เท่านั้น และผู้ใช้ต้องเข้าฟอร์มผ่านลิงก์ที่ส่งจาก LINE
+          เพื่อให้ userId ถูกผูกกับข้อมูลการนัดหมายอย่างถูกต้อง
+        </p>
+        <div class="highlight">
+          <p><strong>Key rule:</strong> เก็บ userId ก่อน → ค่อยให้กรอกฟอร์ม</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cover image (optional) -->
+    <div class="cover">
+      <img class="zoomable" src="/images/month3/cover.png" alt="Month 3 cover" data-zoom>
+      <div class="zoom-hint">Click to zoom</div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- 8 STEPS -->
+<section id="steps" class="section alt">
+  <div class="container">
+
+    <div class="section-head m3-head">
+      <p class="eyebrow">User Flow</p>
+      <h2>8 ฟังก์ชัน / 8 ขั้นตอนการใช้งาน</h2>
+      <p class="muted">คลิกที่ภาพเพื่อขยายเต็มจอ (ทุกการ์ดกดได้)</p>
+    </div>
+
+    <div class="step-grid">
+      <!-- Step 1 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">01</span>
+          <h3>เพิ่มเพื่อน LINE OA</h3>
+        </div>
+        <p class="muted">เริ่มต้นใช้งานโดยเพิ่มเพื่อน เพื่อให้ระบบส่งแจ้งเตือนผ่าน LINE ได้</p>
+        <img class="zoomable" src="/images/month3/step1.png" alt="Step 1" data-zoom>
+      </article>
+
+      <!-- Step 2 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">02</span>
+          <h3>พิมพ์ “นัดแพทย์”</h3>
+        </div>
+        <p class="muted">ระบบส่งลิงก์ Google Form นัดหมายให้ทันที</p>
+        <img class="zoomable" src="/images/month3/step2.png" alt="Step 2" data-zoom>
+      </article>
+
+      <!-- Step 3 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">03</span>
+          <h3>บันทึก LINE userId อัตโนมัติ</h3>
+        </div>
+        <p class="muted">Make เก็บ userId และผูกกับฟอร์มแบบ Prefill (ผู้ใช้ไม่ต้องกรอกเอง)</p>
+        <img class="zoomable" src="/images/month3/step3.png" alt="Step 3" data-zoom>
+      </article>
+
+      <!-- Step 4 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">04</span>
+          <h3>กรอกข้อมูลนัดหมาย</h3>
+        </div>
+        <p class="muted">ชื่อ-นามสกุล / เบอร์ / วันเวลา / ประเภทบริการ</p>
+        <img class="zoomable" src="/images/month3/step4.png" alt="Step 4" data-zoom>
+      </article>
+
+      <!-- Step 5 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">05</span>
+          <h3>ข้อมูลลง Google Sheets</h3>
+        </div>
+        <p class="muted">เมื่อกดส่ง ข้อมูลบันทึกลงชีตอัตโนมัติเป็นฐานข้อมูลกลาง</p>
+        <img class="zoomable" src="/images/month3/step5.png" alt="Step 5" data-zoom>
+      </article>
+
+      <!-- Step 6 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">06</span>
+          <h3>แจ้งเตือนแอดมินทันที</h3>
+        </div>
+        <p class="muted">GAS ส่ง Push Message แจ้งรายละเอียดแบบเรียลไทม์</p>
+        <img class="zoomable" src="/images/month3/step6.png" alt="Step 6" data-zoom>
+      </article>
+
+      <!-- Step 7 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">07</span>
+          <h3>ยืนยันให้ผู้ป่วย</h3>
+        </div>
+        <p class="muted">ส่งข้อความยืนยันว่า “ระบบได้รับข้อมูลเรียบร้อยแล้ว”</p>
+        <img class="zoomable" src="/images/month3/step7.png" alt="Step 7" data-zoom>
+      </article>
+
+      <!-- Step 8 -->
+      <article class="step-card">
+        <div class="step-top">
+          <span class="step-no">08</span>
+          <h3>เจ้าหน้าที่ติดต่อกลับ</h3>
+        </div>
+        <p class="muted">ยืนยันวัน-เวลา นัดหมายอีกครั้งตามข้อมูลที่ผู้ป่วยส่ง</p>
+        <img class="zoomable" src="/images/month3/step8.png" alt="Step 8" data-zoom>
+      </article>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- DEVELOPMENT PROCESS -->
+<section id="process" class="section">
+  <div class="container">
+
+    <div class="section-head m3-head">
+      <p class="eyebrow">Development Process</p>
+      <h2>ขั้นตอนการพัฒนา (Dev Process)</h2>
+      <p class="muted">
+        ออกแบบ workflow end-to-end → ตั้งค่า LINE OA/Messaging API → สร้าง Make Scenario → ทำ Prefill Form → เชื่อม Sheets + Apps Script Trigger → แจ้งเตือน Admin/Patient
+      </p>
+    </div>
+
+    <div class="process-grid">
+      <div class="process-card">
+        <h3>1) End-to-End Workflow Design</h3>
+        <p class="muted">กำหนดเส้นทางข้อมูล: LINE → Form → Sheet → Trigger → Notify</p>
+      </div>
+
+      <div class="process-card">
+        <h3>2) LINE OA & Messaging API Setup</h3>
+        <p class="muted">เตรียม webhook / token / โครงข้อความตอบกลับ (reply/push)</p>
+      </div>
+
+      <div class="process-card">
+        <h3>3) Make Scenario Automation</h3>
+        <p class="muted">Webhook → Iterator → Filter “นัดแพทย์” → ดึง userId/replyToken → สร้าง Prefill link → ส่งกลับ LINE</p>
+      </div>
+
+      <div class="process-card">
+        <h3>4) Google Form Prefill Design</h3>
+        <p class="muted">ทำฟอร์มให้รองรับ Prefill เพื่อฝัง userId ลงไปอย่างถูกต้อง</p>
+      </div>
+
+      <div class="process-card">
+        <h3>5) Google Sheets + Apps Script Trigger</h3>
+        <p class="muted">เขียน <code>onFormSubmit(e)</code> อ่านแถวใหม่ (e.values) แล้วทำงานทันที</p>
+      </div>
+
+      <div class="process-card accent">
+        <h3>6) Notification (Admin / Patient)</h3>
+        <p class="muted">ส่ง Flex Message ให้แอดมิน + ส่งข้อความยืนยันให้ผู้ป่วย โดยใช้ userId จากชีต</p>
+      </div>
+    </div>
+
+    <div class="grid two" style="margin-top:16px;">
+      <div class="panel">
+        <h3>ปัญหาที่พบ</h3>
+        <ul class="list">
+          <li>Make แพ็กเกจฟรีมีเครดิตจำกัด → ระบบหยุดเมื่อครบโควตา</li>
+          <li>โครง workflow ซับซ้อน ต้องทดสอบหลายรอบเพื่อเก็บ userId ให้ถูกต้อง</li>
+          <li>ช่วงแรกยังงงเรื่องการ deploy/การตั้งค่า integration บางจุด</li>
+        </ul>
+      </div>
+
+      <div class="panel mentor">
+        <h3>ความคิดเห็นของพี่เลี้ยง</h3>
+        <p class="muted">
+          แนะนำให้เข้าใจภาพรวมระบบอัตโนมัติให้ชัด ทดลองหลายรูปแบบ และเลือกเครื่องมือให้เหมาะกับงบประมาณในงานจริง
+          พร้อมตรวจงานและให้คำแนะนำละเอียดทุกขั้นตอน
+        </p>
+        <p class="quote">“เข้าใจภาพรวมก่อน แล้วค่อยลงรายละเอียด—ระบบ automation จะทำได้เร็วและแม่นขึ้น”</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+</main>
+
+
+<!-- LIGHTBOX -->
+<div id="lightbox" class="lightbox" aria-hidden="true">
+  <button class="close-btn" aria-label="Close">&times;</button>
+  <img class="lightbox-content" id="lightboxImg" alt="Zoomed image">
+  <div class="lightbox-tip">กด ESC หรือคลิกพื้นหลังเพื่อปิด</div>
+</div>
+
+<script type="module" src="/src/main.js"></script>
+
+<script>
+  // Universal Lightbox: รูปไหนมี data-zoom = กดขยายได้
+  const lightbox = document.getElementById("lightbox");
+  const lightboxImg = document.getElementById("lightboxImg");
+  const closeBtn = document.querySelector(".close-btn");
+
+  function openLightbox(src){
+    lightbox.style.display = "flex";
+    lightbox.setAttribute("aria-hidden", "false");
+    lightboxImg.src = src;
+    document.body.style.overflow = "hidden";
+  }
+  function closeLightbox(){
+    lightbox.style.display = "none";
+    lightbox.setAttribute("aria-hidden", "true");
+    document.body.style.overflow = "";
+  }
+
+  document.querySelectorAll("[data-zoom]").forEach(el=>{
+    el.addEventListener("click", ()=> openLightbox(el.src));
+    el.addEventListener("error", ()=> {
+      // ถ้ารูปไม่มีจริง ให้ซ่อนการ์ด/รูปเพื่อไม่ให้แตก
+      const card = el.closest(".step-card") || el.closest(".cover");
+      if(card) card.style.display = "none";
+    });
+  });
+
+  closeBtn.addEventListener("click", closeLightbox);
+  lightbox.addEventListener("click", (e)=> { if(e.target === lightbox) closeLightbox(); });
+  document.addEventListener("keydown", (e)=> { if(e.key === "Escape") closeLightbox(); });
+</script>
+
+</body>
+</html>
